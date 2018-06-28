@@ -1,3 +1,3 @@
-# my-Hexo-Blog
+# my-netlify-Blog
 
-Hexo Blog
+life Blog
