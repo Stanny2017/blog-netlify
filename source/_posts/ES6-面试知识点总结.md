@@ -8,11 +8,11 @@ tags: 前端学习总结
 
 # Promise
 
-1. Promise 是异步编程的一种解决方案。简单来说，Promise相当于一个容器，里面保存着某种未来才会结束的事件，通常是一个异步操作。它的优点是把执行代码和处理结果的代码清晰的分离了。
+1. Promise 是 es6 异步编程的一种解决方案。简单来说，Promise相当于一个容器，里面保存着某种未来才会结束的事件，通常是一个异步操作。
 
-2. 三个状态：pending，resolve，reject
+2. 三个状态：pending，resolved，rejected
 
-3. promise有三个常用的方法分别是then、catch、finally；then方法传入resolve状态的回调函数，在异步操作执行成功时执行；catch相反；finally指定无论何种状态都会执行的操作；
+3. promise有三个常用的方法分别是then、catch、finally；then方法传入resolve状态的回调函数，在异步操作执行成功时执行（第二个参数也可以抛错）；catch相反；finally指定无论何种状态都会执行的操作；
 
 4. 可以链式调用
 
@@ -21,7 +21,8 @@ tags: 前端学习总结
    ```js
    let promise = new Promise(function(resolve, reject) {
      console.log('Promise');
-     resolve();
+     resolve();//异步代码，执行完所有的同步代码才会回到这里
+     console.log('end')// 该句仍是 同步逻辑
    });
 
    promise.then(function() {
@@ -31,6 +32,7 @@ tags: 前端学习总结
    console.log('Hi!');
    //输出顺序如下：
    // Promise
+   // end
    // Hi!
    // resolved
 
@@ -38,20 +40,21 @@ tags: 前端学习总结
    // 但是状态一旦改变后面出现不同的状态就不变了
    ```
 
-   ​
-
 6. Promise.all() 用于将多个Promise实例包装成一个新的Promise实例，以数组'[ ]'形式转入，只有当p1,p2,p3都执行成功，p的状态才会成功，有一个被reject，p的状态也会被reject
 
    ```js
-   const p = Promise.all([p1,p2,p3]);//p1,p2,p3 都是Promise的实例，如果不是就会先调用Promise.resolve()将其转换成promise对象
+   const p = Promise.all([p1,p2,p3]);//p1,p2,p3 都是Promise的实例，如果参数不是promise实例，就会先调用Promise.resolve()将其转换成promise对象
    ```
 
 7. Promise.race()
+
 ```js
 	const racep = Promise.race([p1,p2,p3])
  	//只要 p1,p2,p3 中有一个率先改变状态，就传给racep
 ```
+
 7. Promise应用举例：比如图像的加载
+
 ```js
 /**
  * 图像的加载是一个异步的过程
@@ -73,9 +76,9 @@ tags: 前端学习总结
 # let 和const
 
 1. let 声明的变量具有块级作用域
-2. let声明的变量不是全局变量，不能通过`window.变量名` 来访问
+2. let 声明的变量不是全局变量，不会绑定到 window 上
 3. var 声明的变量会产生变量提升，let 不会
-4. const 定义常量值，不能够重新赋值，如果值是一个对象，可以改变对象里面的属性值
+4. const 定义常量值，声明必须初始，不能重复定义和修改，如果值是一个对象，可以改变对象里面的属性值
 
 ```js
 var a =[];
@@ -130,8 +133,8 @@ for(var i=0;i<10;i++){
 # Set 
 
 1. 类似于数组，没有重复的值，用`for... of`循环遍历它
-2. `Array.from()`可以将set结构转换为array
-3. key 和 value 即键名和键值是同一个值
+2. `Array.from()`可以将set结构转换为array  [...set]  将类数组对象转换为数组
+3. set 没有键名，只有键值，或者说 key 和 value 即键名和键值是同一个值
 
 ```js
 const set = new Set();
@@ -161,6 +164,7 @@ Array.from(new Set(array))
 - `entries()`：返回键值对的遍历器
 
 - `forEach()`：使用回调函数遍历每个成员
+
 
 5. set 应用
 ```js
@@ -234,8 +238,6 @@ let difference = new Set([...a].filter(x => !b.has(x)));
     map.get(k2) // 222
     ```
 
-    ​
-
 8. map的遍历顺序就是插入顺序
 
     ```js
@@ -243,17 +245,18 @@ let difference = new Set([...a].filter(x => !b.has(x)));
     for(let [key,value] of map){
       console.log(key,value)
     }
+    // map 转化为 object，如果有key值是非字符串会先转成字符串
 
-    // map 转化为 object，如果有key值是非字符串会先转成字符串型
     function mapToObj(map){
         var obj = {};//var obj = Object.create(null)
+
         for(let [k,v] of map){
             obj[k] = v;
         }
         return obj;
     }
-
     // obj 转换为 map
+
     function objToMap(obj){
         let map = new Map();
         for(let key in obj){
@@ -396,5 +399,4 @@ let difference = new Set([...a].filter(x => !b.has(x)));
    ​
 # 模板字符串
 
-
-
+`${}`

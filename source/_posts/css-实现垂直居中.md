@@ -28,9 +28,9 @@ tags: 前端学习总结
                height: 600px;
                display: flex;
                align-items: center;
-               /*垂直居中*/
+               /*交叉轴垂直居中*/
                justify-content: center;
-               /*水平居中*/
+               /*主轴水平居中*/
            }
 
            #wrapper>div {

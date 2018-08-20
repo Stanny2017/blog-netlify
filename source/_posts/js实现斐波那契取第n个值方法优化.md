@@ -47,7 +47,7 @@ var getN = (function() {
       return cache[n];
     }
   };
-})();
+})(n);
 
 /**
  *  优化2: 定义数组循环存储之前的值
