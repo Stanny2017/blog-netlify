@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <title>事件绑定</title>
+    <style>
+        .A {
+            width: 400px;
+            height: 400px;
+            background: lightblue;
+            position: relative;
+        }
+
+        .B {
+            width: 200px;
+            height: 100px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: lightcoral;
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <div class="A">
+
+        <div class="B">B</div>
+    </div>
+    <script>
+        // 思路 1
+        function hanleClick(event) {
+            console.log(event.target)
+            var div = getOutterDiv(event.target, '.B')
+            console.log(div)
+            // if (getOutterDiv(event.target, '.B') !== divB || getOutterDiv(event.target, 'A') === divA) {
+            //     // some code
+            // } else return;
+        }
+
+        function getOutterDiv(element, selector) {
+            while (element) {
+                if (element.matches(selector)) {
+                    break;
+                } else {
+                    element = element.parentElement;
+                }
+            }
+            return element;
+        }
+        var divA = document.querySelector('.A')
+        var divB = document.querySelector('.B')
+        divA.addEventListener('click', hanleClick);
+
+        // 思路2 绑定事件到子节点
+
+        function hanleClick2(e) {
+
+
+            console.log('clicked! 2')
+
+        }
+        // divB.addEventListener('click',hanleClick,true)
+        // divA.addEventListener('click', hanleClick2, true);
+    </script>
+</body>
+
+</html>

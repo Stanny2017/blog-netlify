@@ -32,8 +32,6 @@ tags: 前端学习总结
 - hexo deploy  远程部署
 ```
 
-
-
 ## 问题记录
 
 1. hexo deploy 过程中遇到 Fatal HttpRequestException Error 

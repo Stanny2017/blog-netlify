@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+
+    <style>
+        .a {
+            width: 400px;
+            height: 400px;
+            background: lightblue;
+            position: relative;
+        }
+
+        .b {
+            width: 200px;
+            height: 100px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: lightcoral;
+        }
+    </style>
+    </style>
+    <div class="a">
+        <div class="b">
+            <div class="c">
+                i am c
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var divA = document.querySelector('.a');
+        var divB = document.querySelector('.b');
+        divB.addEventListener('click', test);
+        divA.addEventListener('click', handlerClick);
+        function handlerClick(e) {
+            
+            console.log('function a');
+        }
+        function test(e) {
+            // console.log(e.target)
+            e.stopImmediatePropagation();
+        }
+    </script>
+</body>
+
+</html>

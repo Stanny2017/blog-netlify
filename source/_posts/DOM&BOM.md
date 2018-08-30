@@ -11,7 +11,9 @@
 ```javascript
 // 原理：事件冒泡，为父元素绑定事件代理子元素
 document.getElementById('node').addEventListener('click',function (event){
-    event.target=
+    if(event.target.nodeName==='DIV'){
+        // zhixing 
+    }
 },false)
 function eventProxy(node,eventType,childNodeName,callback){
     node.addEventListener(eventType,function (event){
