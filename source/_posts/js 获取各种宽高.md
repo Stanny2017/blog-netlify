@@ -32,6 +32,13 @@ An element's scrollTop value is a measurement of the distance from the element's
 
 ## offsetTop
 
-- 距离 最近的 relatively positioned 父元素顶部的 pixels
-- 
+- 距离 最近的 positioned 父元素顶部（padding edge）的 pixels
+- 包括 padding 
+- 不包括 border 
+
+## offsetParent
+
+- 返回距离元素最近的 positioned 父元素的引用
+- 如果 父元素都是 non-positioned 则返回 html 或者是 body
+- display:none 的元素  return null
 
