@@ -1,6 +1,6 @@
 # my-netlify-Blog
 
-Life Blog based on Hexo, built on netlify.
+Personal Blog based on Hexo, built on netlify.
 
 contains five labels:
 1. front-end-learning
