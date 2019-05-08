@@ -22,8 +22,6 @@
 
 ## TCP 四次挥手
 
-
-
 ## 七层网络模型
 
 ![image](https://uploadfiles.nowcoder.net/images/20170221/3376963_1487669763810_92C6A2EF3BAA43B44BAC7C8EDB09DC1F)

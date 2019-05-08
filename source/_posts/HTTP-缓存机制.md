@@ -10,7 +10,6 @@ tags: 前端学习总结
 - [参考2](https://segmentfault.com/a/1190000008956069)
 - [参考3](https://segmentfault.com/a/1190000010690320)
 
-
 缓存在前端面试中经常被问到，必须彻底弄懂机制。
 
 ## Http 缓存分为两类
